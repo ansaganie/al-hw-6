@@ -183,8 +183,4 @@ class Car {
   }
 }
 
-const car = new Car();
-car.currentFuelVolume = 5;
-car.isStarted = true;
-
 module.exports = Car;
