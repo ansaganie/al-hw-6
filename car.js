@@ -1,6 +1,6 @@
-import { isValidNumber, validateNumber, validateString } from './utils';
+const { isValidNumber, validateNumber, validateString } = require('./utils');
 
-export default class Car {
+class Car {
   #brand;
 
   #model;
@@ -167,14 +167,24 @@ export default class Car {
       throw new Error('Машина должна быть заведена, чтобы ехать');
     }
 
-    if (this.#currentFuelVolume === 0) {
-      throw new Error('Недостаточно топлива');
+    if (!this.#fuelConsumption) {
+      throw new Error('Укажите расход топлива');
     }
 
     const distance = speed * hours;
     const consumptionVolume = (distance / 100) * this.#fuelConsumption;
 
+    if (this.#currentFuelVolume < consumptionVolume) {
+      throw new Error('Недостаточно топлива');
+    }
+
     this.#mileage += distance;
     this.#currentFuelVolume -= consumptionVolume;
   }
 }
+
+const car = new Car();
+car.currentFuelVolume = 5;
+car.isStarted = true;
+
+module.exports = Car;
