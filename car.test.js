@@ -16,11 +16,27 @@ describe('Check setting and getting of private values', () => {
 
   it('should throw type error if brand has invalid length', () => {
     expect(() => {
-      car.brand = 'This is very long brand name that is not valid length  for car\'s brand name';
+      car.brand = 'This is very long brand name that is not valid length';
     }).toThrow();
 
     expect(() => {
       car.brand = '';
+    }).toThrow();
+
+    expect(() => {
+      car.brand = 45656;
+    }).toThrow();
+
+    expect(() => {
+      car.brand = true;
+    }).toThrow();
+
+    expect(() => {
+      car.brand = {};
+    }).toThrow();
+
+    expect(() => {
+      car.brand = () => undefined;
     }).toThrow();
   });
 
@@ -33,11 +49,23 @@ describe('Check setting and getting of private values', () => {
 
   it('should throw type error if model is invalid type', () => {
     expect(() => {
+      car.brand = 'This is very long model name that is not valid length';
+    }).toThrow();
+
+    expect(() => {
+      car.brand = '';
+    }).toThrow();
+
+    expect(() => {
       car.model = 464654;
     }).toThrow();
 
     expect(() => {
       car.model = false;
+    }).toThrow();
+
+    expect(() => {
+      car.brand = {};
     }).toThrow();
 
     expect(() => {
@@ -63,6 +91,14 @@ describe('Check setting and getting of private values', () => {
 
     expect(() => {
       car.yearOfManufacturing = Infinity;
+    }).toThrow();
+
+    expect(() => {
+      car.yearOfManufacturing = '1899';
+    }).toThrow();
+
+    expect(() => {
+      car.yearOfManufacturing = {};
     }).toThrow();
 
     expect(() => {
